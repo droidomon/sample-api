@@ -16,10 +16,24 @@ describe("Testing /api/users endpoint", () => {
       });
   });
 
-  it("GET to / with non-admin authToken should fail with 401 Unauthorized", (done) => {
+  it("GET to / with non-admin authToken should fail with 403 Forbidden", (done) => {
     const res = request(app)
       .get("/api/users")
       .set("Authorization", "Bearer qwert")
+      .expect(403)
+      .end((err, res) => {
+        done(err);
+        if (!err) {
+          console.log(`Code: ${res.status}, success: ${res.body.success}`);
+          console.log("data:", res.body.data);
+        }
+      });
+  });
+
+  it("GET to / with invalid authToken should fail with 401 unauthorized", (done) => {
+    const res = request(app)
+      .get("/api/users")
+      .set("Authorization", "Bearer qqqqq")
       .expect(401)
       .end((err, res) => {
         done(err);

@@ -5,7 +5,7 @@ exports.getUsers = asyncHandler(async (req, res, next) => {
   const users = db.users; // get all users from the db
   const usersPublic = [];
 
-  // remove password for each user
+  // remove sensitive info for each user
   users.forEach((user) => {
     usersPublic.push({ id: user.id, name: user.name, username: user.username });
   });
