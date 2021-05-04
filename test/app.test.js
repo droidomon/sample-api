@@ -133,3 +133,17 @@ describe("Testing /api/auth endpoint", () => {
       });
   });
 });
+
+describe("Any request to non configured routes should return 404 Not Found", () => {
+  it("GET request to / should return 404", (done) => {
+    request(app).get("/").expect(404, done);
+  });
+
+  it("GET request to /api should return 404", (done) => {
+    request(app).get("/api").expect(404, done);
+  });
+
+  it("GET request to /api/something should return 404", (done) => {
+    request(app).get("/api/something").expect(404, done);
+  });
+});
