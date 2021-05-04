@@ -3,10 +3,10 @@
 - Clone this repository
 - cd into the directory: `cd sample-api`
 - Add PORT number to the .env file: `echo "PORT=3000" > .env`
-- To run the tests: `npm test`
-- To run the test and watch for changes: `npm test:dev`
+- To run the tests: `npm run test`
+- To run the test and watch for changes: `npm run test:dev`
 - To run the server: `npm start`
-- To run the server and watch for changes: `npm start:dev`
+- To run the server and watch for changes: `npm run start:dev`
 
 ## Endpoints
 
