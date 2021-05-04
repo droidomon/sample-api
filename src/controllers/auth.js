@@ -1,7 +1,6 @@
-const asyncHandler = require("../middlewares/asyncHandler");
 const db = require("../db/dummy");
 
-module.exports.login = asyncHandler(async (req, res, next) => {
+module.exports.login = (req, res, next) => {
   const { username, password } = req.body;
 
   // if the username or password is empty, send 400 for bad request
@@ -32,12 +31,12 @@ module.exports.login = asyncHandler(async (req, res, next) => {
   };
   // If the credentials are correct, send 200 OK with user's public info and authtoken
   res.status(200).json({ success: true, data: [userPublic] });
-});
+};
 
-module.exports.logout = asyncHandler(async (req, res, next) => {
+module.exports.logout = (req, res, next) => {
   // get the user that's currently authorized
   const user = req.body.currentUser;
 
   // pretend that the user logged out and send 200 along with the username of the user
   res.status(200).json({ success: true, data: [{ username: user.username }] });
-});
+};
